@@ -38,7 +38,6 @@ public class ClientResource {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, direction, orderBy);
 		
 		return ResponseEntity.ok().body(clientService.findAll(pageRequest));
-		
 	}
 	
 	@GetMapping(value = "/{id}")
@@ -53,16 +52,7 @@ public class ClientResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(dto);
 	}
 	
-//	@PostMapping
-//	@ResponseStatus(code = HttpStatus.CREATED)
-//	public ClientDTO insert(@RequestBody ClientDTO clientDTO){
-//		ClientDTO dto = clientService.insert(clientDTO);
-//		return dto;
-//	}
-	
-	
 	@PutMapping(value = "/{id}")
-	@ResponseStatus(code = HttpStatus.OK)
 	public ResponseEntity<ClientDTO> update(@PathVariable Long id, @RequestBody ClientDTO clientDTO){
 		ClientDTO dto = clientService.update(id, clientDTO);
 		return ResponseEntity.ok().body(dto);
@@ -72,6 +62,5 @@ public class ClientResource {
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id){
 		clientService.delete(id);
-//		return ResponseEntity;
 	}
 }
