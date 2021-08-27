@@ -12,9 +12,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.devsuperior.bds02.dto.CityDTO;
-import com.devsuperior.bds02.exception.DataBaseException;
-import com.devsuperior.bds02.exception.ResourceNotFoundException;
 import com.devsuperior.bds02.repository.CityRepository;
+import com.devsuperior.bds02.service.exception.DataBaseException;
+import com.devsuperior.bds02.service.exception.ResourceNotFoundException;
 
 @Service
 public class CityService {
@@ -27,7 +27,7 @@ public class CityService {
 		return repository.findAll(Sort.by("name")).stream().map(x -> new CityDTO(x)).collect(Collectors.toList());
 	}
 
-	public void delete(Long id){		
+	public void delete(Long id) {		
 		try {
 			repository.deleteById(id);
 			
